@@ -105,7 +105,7 @@ const Hero = () => {
       <TechSlider />
       </div>
 
-      {/* <BottomLine /> */}
+      <BottomLine />
     </Section>
   );
 };
