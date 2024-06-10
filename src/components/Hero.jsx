@@ -8,6 +8,7 @@ import { useRef } from "react";
 import Generating from "./Generating";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
+import TechSlider from "./TechSlider";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
@@ -101,9 +102,10 @@ const Hero = () => {
         </div>
 
         <CompanyLogos className="hidden relative z-10 mt-20 lg:block" />
+      <TechSlider />
       </div>
 
-      <BottomLine />
+      {/* <BottomLine /> */}
     </Section>
   );
 };
