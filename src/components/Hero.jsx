@@ -42,10 +42,10 @@ const Hero = () => {
           </p>
           <div className=" flex justify-center">
             <Button className="w-auto  " href="/pricing" >
-              My Projects
+              View Projects
             </Button>
             <Button className="w-auto ml-6" href="/pricing" white>
-            Get my resume
+            My Resume
             </Button>
           </div>
           
