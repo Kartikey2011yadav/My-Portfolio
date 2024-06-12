@@ -1,5 +1,5 @@
 import React from 'react';
-import IconSlider from './IconSlider'; // Adjust the import path as necessary
+import IconSlider from './design/IconsSlider'; // Adjust the import path as necessary
 const background = "bg-backgroundColorPrimary";
 
 const header = "Tools behind the magic";
