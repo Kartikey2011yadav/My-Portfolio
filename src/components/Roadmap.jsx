@@ -7,7 +7,7 @@ import { check2, grid, loading1 } from "../assets";
 import { Gradient } from "./design/Roadmap";
 
 // test 
-import { Suspense, lazy, useEffect, useState } from 'react';
+import {lazy} from 'react';
 
 const DisplacementSphere = lazy(() =>
   import('./displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
@@ -15,6 +15,8 @@ const DisplacementSphere = lazy(() =>
 
 const Roadmap = () => (
   <Section className="overflow-hidden" id="roadmap">
+    <DisplacementSphere />
+    {/* <DisplacementSphere className=" scale-x-[-1] "/> */}
     <div className="container md:pb-10">
       <Heading tag="Ready to get started" title="What we’re working on" />
 
@@ -82,7 +84,7 @@ const Roadmap = () => (
         <Button href="/roadmap">Our roadmap</Button>
       </div>
     </div>
-    <DisplacementSphere />
+    
   </Section>
 );
 
