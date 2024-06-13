@@ -4,10 +4,10 @@ import Section from "./Section";
 import Tagline from "./Tagline";
 import { roadmap } from "../constants";
 import { check2, grid, loading1 } from "../assets";
-import { Gradient } from "./design/Roadmap";
+import { Gradient } from "./design/workingOn";
 import { stars } from "../assets";
 
-const Roadmap = () => (
+const WorkingOn = () => (
   <Section className="overflow-hidden" id="roadmap">
     {/* <DisplacementSphere className=" scale-x-[-1] "/> */}
     <div className="container relative z-2   ">
@@ -120,4 +120,4 @@ const Roadmap = () => (
   </Section>
 );
 
-export default Roadmap;
+export default WorkingOn;

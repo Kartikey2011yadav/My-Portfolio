@@ -9,7 +9,7 @@ import {
   Gradient,
   VideoBar,
   VideoChatMessage,
-} from "./design/Services";
+} from "./design/ProjectsHome";
 
 // test 
 import { lazy } from 'react';
@@ -18,14 +18,14 @@ const DisplacementSphere = lazy(() =>
   import('./displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
 );
 
-const Services = () => {
+const Project = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   return (
     <Section id="how-to-use">
       <DisplacementSphere />
       <div className="container">
         <Heading
-          title="My Projects "
+          title="My Featuring Projects "
           text="Few of the brillient projects built by me"
         />
 
@@ -154,4 +154,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Project;

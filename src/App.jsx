@@ -5,9 +5,9 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Pricing from "./components/Pricing";
-import Roadmap from "./components/Roadmap";
+import WorkingOn from "./components/workingOn";
 import ScrollToTopButton from "./components/ScrollToTopButton";
-import Services from "./components/Services";
+import Project from "./components/ProjectsHome";
 
 const App = () => {
   return (
@@ -17,8 +17,8 @@ const App = () => {
         <Hero />
         <Features />
         <Collaboration />
-        <Services />
-        <Roadmap />
+        <Project />
+        <WorkingOn />
         {/* <Pricing /> */}
         <Footer />
         <ScrollToTopButton />
