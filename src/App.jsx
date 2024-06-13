@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Pricing from "./components/Pricing";
 import Roadmap from "./components/Roadmap";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import Services from "./components/Services";
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Pricing />
         <Roadmap />
         <Footer />
+        <ScrollToTopButton />
       </div>
 
       <ButtonGradient />
