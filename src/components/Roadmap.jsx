@@ -5,18 +5,47 @@ import Tagline from "./Tagline";
 import { roadmap } from "../constants";
 import { check2, grid, loading1 } from "../assets";
 import { Gradient } from "./design/Roadmap";
-
-// test 
-import {lazy} from 'react';
-
-const DisplacementSphere = lazy(() =>
-  import('./displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
-);
+import { stars } from "../assets";
 
 const Roadmap = () => (
   <Section className="overflow-hidden" id="roadmap">
-    <DisplacementSphere />
     {/* <DisplacementSphere className=" scale-x-[-1] "/> */}
+    <div className="container relative z-2   ">
+        <div className="hidden relative justify-center mb-[6.5rem] lg:flex  ">
+
+          <div className="absolute w-full -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-spin-slow ">
+            <img
+              src={stars}
+              alt="stars"
+              className="w-full"
+              width={950}
+              height={200}
+            />
+            <img
+              src={stars}
+              alt="stars"
+              className="w-full ml-60 mt-28"
+              width={950}
+              height={200}
+            />
+          </div>
+          <div className="absolute w-full -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-spin-slow-alt mt-28">
+            <img
+              src={stars}
+              alt="stars"
+              className="w-full ml-100"
+              width={850}
+              height={200}
+            />
+            <img
+              src={stars}
+              alt="stars"
+              className="w-full ml-50 mt-30"
+              width={850}
+              height={200}
+            />
+          </div>
+        </div>
     <div className="container md:pb-10">
       <Heading tag="Ready to get started" title="What we’re working on" />
 
@@ -49,7 +78,9 @@ const Roadmap = () => (
 
                     <div className="flex items-center px-4 py-1 bg-n-1 rounded text-n-8">
                       <img
-                        className="mr-2.5"
+                        className={`mr-2.5 ${
+                          item.status !== "done" && "animate-spin"
+                        } pointer-events-none select-none`}
                         src={item.status === "done" ? check2 : loading1}
                         width={16}
                         height={16}
@@ -83,6 +114,7 @@ const Roadmap = () => (
       <div className="flex justify-center mt-12 md:mt-15 xl:mt-20">
         <Button href="/roadmap">Our roadmap</Button>
       </div>
+    </div>
     </div>
     
   </Section>

@@ -11,20 +11,27 @@ import {
   VideoChatMessage,
 } from "./design/Services";
 
+// test 
+import { lazy } from 'react';
+
+const DisplacementSphere = lazy(() =>
+  import('./displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
+);
 
 const Services = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   return (
     <Section id="how-to-use">
+      <DisplacementSphere />
       <div className="container">
         <Heading
-          title="Generative AI made for creators."
-          text="Brainwave unlocks the potential of AI-powered applications"
+          title="My Projects "
+          text="Few of the brillient projects built by me"
         />
 
         <div className="relative">
           {/* Service 1 */}
-          <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem]">
+          <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem] ">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none md:w-3/5 xl:w-auto">
               <img
                 className="w-full h-full object-cover md:object-right"
@@ -94,8 +101,8 @@ const Services = () => {
                     <li
                       key={index}
                       className={`rounded-2xl flex items-center justify-center ${index === 2
-                          ? "w-[3rem] h-[3rem] p-0.25 bg-conic-gradient md:w-[4.5rem] md:h-[4.5rem]"
-                          : "flex w-10 h-10 bg-n-6 md:w-15 md:h-15"
+                        ? "w-[3rem] h-[3rem] p-0.25 bg-conic-gradient md:w-[4.5rem] md:h-[4.5rem]"
+                        : "flex w-10 h-10 bg-n-6 md:w-15 md:h-15"
                         }`}
                     >
                       <div
@@ -112,48 +119,35 @@ const Services = () => {
                 </ul>
               </div>
 
-              {/* <div className="relative h-[20rem] bg-n-8 rounded-xl overflow-hidden md:h-[25rem]">
-                <img
-                  src={service3}
-                  className="w-full h-full object-cover"
-                  width={520}
-                  height={400}
-                  alt="Scary robot"
-                />
-
-                <VideoChatMessage />
-                <VideoBar />
-              </div> */}
               {/* <div className="rounded-3xl bg-n-8 border-2   border-purple-500 cursor-none "> */}
-              <div className=" h-[20rem] bg-n-8 rounded-3xl overflow-hidden md:h-[25rem] cursor-none">
-                <div className="relative">
-                  {/* <iframe
+              <div className="relative h-[20rem] overflow-hidden bg-n-8 rounded-3xl md:h-[25rem]">
+
+                {/* <iframe
                     className="absolute top-0 left-0 w-full h-full cursor-none rounded-3xl "
                     src="https://www.youtube.com/embed/aQKcDqT_ZLo?autoplay=1&mute=1&loop=1&playlist=aQKcDqT_ZLo&controls=0&modestbranding=1"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                     title="autoplay-video"
                   ></iframe> */}
-                  {/* <VideoChatMessage /> */}
-                  <img
-                    src={service3}
-                    className={`w-full h-full object-cover ${isPlaying && "animate-pulse"
-                      } pointer-events-none select-none`}
-                    width={520}
-                    height={700}
-                    alt="Scary Robot"
-                  />
+                {/* <VideoChatMessage /> */}
+                <img
+                  src={service3}
+                  className={`w-full h-full object-cover ${isPlaying && "animate-pulse"
+                    } pointer-events-none select-none`}
+                  width={520}
+                  height={700}
+                  alt="Scary Robot"
+                />
 
-                  <VideoChatMessage isPlaying={isPlaying} />
-                  <VideoBar isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-                  <Gradient />
-                </div>
+                <VideoChatMessage isPlaying={isPlaying} />
+                <VideoBar isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
                 <Gradient />
+
               </div>
+              <Gradient />
             </div>
           </div>
 
-          <Gradient />
         </div>
       </div>
     </Section>
