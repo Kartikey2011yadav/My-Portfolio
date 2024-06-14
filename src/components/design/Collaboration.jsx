@@ -1,4 +1,6 @@
 import { curve1, curve2 } from "../../assets";
+import PlusSvg from "../../assets/svg/PlusSvg";
+
 
 export const RightCurve = () => {
   return (
@@ -13,5 +15,17 @@ export const LeftCurve = () => {
     <div className="hidden absolute top-1/2 right-full w-[32.625rem] -mt-1 mr-10 pointer-events-none xl:block">
       <img src={curve1} width={522} height={182} alt="Curve 1" />
     </div>
+  );
+};
+
+export const BottomLine = () => {
+  return (
+    <>
+      <div className="hidden absolute top-[55.45rem] left-10 right-10 h-0.25 bg-color-5 pointer-events-none xl:block" />
+
+      <PlusSvg className="hidden absolute top-[55.1375rem] left-[2.1875rem] z-2 pointer-events-none xl:block" />
+
+      <PlusSvg className="hidden absolute top-[55.1375rem] right-[2.1875rem] z-2 pointer-events-none xl:block" />
+    </>
   );
 };

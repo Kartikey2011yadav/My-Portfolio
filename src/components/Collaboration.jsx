@@ -3,6 +3,7 @@ import { collabApps, collabContent, collabText } from "../constants";
 import Button from "./Button";
 import Section from "./Section";
 import { LeftCurve, RightCurve } from "./design/Collaboration";
+import { BottomLine } from "./design/Collaboration";
 
 const Collaboration = () => {
   return (
@@ -79,6 +80,7 @@ const Collaboration = () => {
           </div>
         </div>
       </div>
+      <BottomLine/>
     </Section>
   );
 };

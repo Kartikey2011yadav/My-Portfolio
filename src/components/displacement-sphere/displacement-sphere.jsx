@@ -65,6 +65,8 @@ export const DisplacementSphere = props => {
 
     camera.current = new PerspectiveCamera(54, innerWidth / innerHeight, 0.1, 100);
     camera.current.position.z = 52;
+    camera.current.position.y = 0;
+    camera.current.position.x = 0;
 
     scene.current = new Scene();
 
@@ -95,9 +97,9 @@ export const DisplacementSphere = props => {
   }, []);
 
   useEffect(() => {
-    const dirLight = new DirectionalLight(0xffffff, 3.0);
+    const dirLight = new DirectionalLight(0xffffff, 3.5);
     // const ambientLight = new AmbientLight(0xa90bd8, 0.4);
-    const ambientLight = new AmbientLight(0xf90bfe, 0.6);
+    const ambientLight = new AmbientLight(0xf90bfe, 0.8);
     // const ambientLight = new AmbientLight(0x121221, 0.4);
 
     dirLight.position.z = 200;

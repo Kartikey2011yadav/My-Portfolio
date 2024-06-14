@@ -31,12 +31,12 @@ const Section = ({
 
       {crosses && (
         <>
-          <div
+          {/* <div
             className={`hidden absolute top-0 left-7.5 right-7.5 h-0.25 bg-color-5 ${
               crossesOffset && crossesOffset
             } pointer-events-none lg:block xl:left-10 xl:right-10`}
-          />
-          <SectionSvg crossesOffset={crossesOffset} />
+          /> */}
+          {/* <SectionSvg crossesOffset={crossesOffset} /> */}
         </>
       )}
     </div>
