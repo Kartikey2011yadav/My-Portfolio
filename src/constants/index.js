@@ -85,7 +85,7 @@ export const brainwaveServicesIcons = [
   sliders04,
 ];
 
-export const roadmap = [
+export const work = [
   {
     id: "0",
     title: "Voice recognition",

@@ -2,13 +2,15 @@ import Button from "./Button";
 import Heading from "./Heading";
 import Section from "./Section";
 import Tagline from "./Tagline";
-import { roadmap } from "../constants";
+import { work } from "../constants";
 import { check2, grid, loading1 } from "../assets";
 import { Gradient } from "./design/workingOn";
 import { stars } from "../assets";
+import { InstagramLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { instagram } from "../assets";
 
 const WorkingOn = () => (
-  <Section className="overflow-hidden" id="roadmap">
+  <Section className="overflow-hidden" id="workingOn">
     {/* <DisplacementSphere className=" scale-x-[-1] "/> */}
     <div className="container relative z-2   ">
         <div className="hidden relative justify-center mb-[6.5rem] lg:flex  ">
@@ -53,7 +55,7 @@ const WorkingOn = () => (
 
 
       <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-[7rem]">
-        {roadmap.map((item) => {
+        {work.map((item) => {
           const status = item.status === "done" ? "Done" : "In progress";
 
           return (
@@ -88,6 +90,7 @@ const WorkingOn = () => (
                       />
                       <div className="tagline">{status}</div>
                     </div>
+                    <img src={instagram} alt="github" />
                   </div>
 
                   <div className="mb-10 -my-10 -mx-15">
