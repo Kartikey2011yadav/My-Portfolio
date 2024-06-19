@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Router>
       
       <Routes>
-        <Route path="/home" element={<Home />}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/projects" element={<Projects />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/connect" element={<Connect />}/>
