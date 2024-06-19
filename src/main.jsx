@@ -10,10 +10,9 @@ import Connect from "./Connect.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
-      
+    <Router>  
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" index element={<Home />}/>
         <Route path="/projects" element={<Projects />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/connect" element={<Connect />}/>
