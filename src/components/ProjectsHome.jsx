@@ -21,7 +21,7 @@ const DisplacementSphere = lazy(() =>
 const Project = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   return (
-    <Section id="how-to-use">
+    <Section id="proj_home">
       <DisplacementSphere />
       <div className="container">
         <Heading

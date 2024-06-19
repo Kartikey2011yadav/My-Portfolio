@@ -2,12 +2,12 @@ import { brainwaveSymbol, check } from "../assets";
 import { collabApps, collabContent, collabText } from "../constants";
 import Button from "./Button";
 import Section from "./Section";
-import { LeftCurve, RightCurve } from "./design/Collaboration";
-import { BottomLine } from "./design/Collaboration";
+import { LeftCurve, RightCurve } from "./design/Intro";
+import { BottomLine } from "./design/Intro";
 
-const Collaboration = () => {
+const Intro = () => {
   return (
-    <Section crosses>
+    <Section crosses id="Intro">
       <div className="container lg:flex">
         <div className="max-w-[25rem]">
           <h2 className="h2 mb-4 md:mb-8">
@@ -85,4 +85,4 @@ const Collaboration = () => {
   );
 };
 
-export default Collaboration;
+export default Intro;

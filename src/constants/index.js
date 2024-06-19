@@ -39,18 +39,18 @@ import {
 export const navigation = [
   {
     id: "0",
-    title: "Features",
-    url: "#features",
+    title: "Home",
+    url: "/",
   },
   {
     id: "1",
-    title: "Extra",
-    url: "#pricing",
+    title: "Projects",
+    url: "/projects",
   },
   {
     id: "2",
-    title: "How to use",
-    url: "#how-to-use",
+    title: "About",
+    url: "/about",
   },
   {
     id: "3",
@@ -59,12 +59,6 @@ export const navigation = [
   },
   {
     id: "4",
-    title: "New account",
-    url: "#signup",
-    onlyMobile: true,
-  },
-  {
-    id: "5",
     title: "Sign in",
     url: "#login",
     onlyMobile: true,
