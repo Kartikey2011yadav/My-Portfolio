@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>  
       <Routes>
+        
         <Route path="/" index element={<Home />}/>
         <Route path="/projects" element={<Projects />}/>
         <Route path="/about" element={<About />}/>
