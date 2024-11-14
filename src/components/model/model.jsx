@@ -1,5 +1,5 @@
-import { animate, useReducedMotion, useSpring } from 'framer-motion';
-import { useInViewport } from '../../hooks';
+import { animate, useReducedMotion, useSpring } from "framer-motion";
+import { useInViewport } from "../../hooks";
 import {
   createRef,
   startTransition,
@@ -7,7 +7,7 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
+} from "react";
 import {
   AmbientLight,
   Color,
@@ -26,25 +26,25 @@ import {
   Vector3,
   WebGLRenderTarget,
   WebGLRenderer,
-} from 'three';
-import { HorizontalBlurShader, VerticalBlurShader } from 'three-stdlib';
-import {resolveSrcFromSrcSet} from '../../utils/image'
-import { classes, cssProps, numToMs } from '../../utils/style';
+} from "three";
+import { HorizontalBlurShader, VerticalBlurShader } from "three-stdlib";
+import { resolveSrcFromSrcSet } from "../../utils/image";
+import { classes, cssProps, numToMs } from "../../utils/style";
 import {
   cleanRenderer,
   cleanScene,
   modelLoader,
   removeLights,
   textureLoader,
-} from '../../utils/three';
-import { ModelAnimationType } from './device-models';
-import { throttle } from '../../utils/throttle';
-import styles from './model.module.css';
+} from "../../utils/three";
+import { ModelAnimationType } from "./device-models";
+import { throttle } from "../../utils/throttle";
+import styles from "./model.module.css";
 
 const MeshType = {
-  Frame: 'Frame',
-  Logo: 'Logo',
-  Screen: 'Screen',
+  Frame: "Frame",
+  Logo: "Logo",
+  Screen: "Screen",
 };
 
 const rotationSpringConfig = {
@@ -89,13 +89,13 @@ export const Model = ({
   const rotationY = useSpring(0, rotationSpringConfig);
 
   useEffect(() => {
-    const { clientWidth, clientHeight } = container.current;
+    const { clientWidth = 800, clientHeight = 1000 } = container.current;
 
     renderer.current = new WebGLRenderer({
       canvas: canvas.current,
       alpha: true,
       antialias: false,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
       failIfMajorPerformanceCaveat: true,
     });
 
@@ -103,8 +103,17 @@ export const Model = ({
     renderer.current.setSize(clientWidth, clientHeight);
     renderer.current.outputColorSpace = SRGBColorSpace;
 
-    camera.current = new PerspectiveCamera(36, clientWidth / clientHeight, 0.1, 100);
-    camera.current.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
+    camera.current = new PerspectiveCamera(
+      36,
+      clientWidth / clientHeight,
+      0.1,
+      100
+    );
+    camera.current.position.set(
+      cameraPosition.x,
+      cameraPosition.y,
+      cameraPosition.z
+    );
     scene.current = new Scene();
 
     modelGroup.current = new Group();
@@ -118,7 +127,7 @@ export const Model = ({
     fillLight.position.set(-6, 2, 2);
     keyLight.position.set(0.5, 0, 0.866);
     lights.current = [ambientLight, keyLight, fillLight];
-    lights.current.forEach(light => scene.current.add(light));
+    lights.current.forEach((light) => scene.current.add(light));
 
     // The shadow container, if you need to move the plane just move this
     shadowGroup.current = new Group();
@@ -134,15 +143,23 @@ export const Model = ({
     const shadowDarkness = 3;
 
     // The render target that will show the shadows in the plane texture
-    renderTarget.current = new WebGLRenderTarget(renderTargetSize, renderTargetSize);
+    renderTarget.current = new WebGLRenderTarget(
+      renderTargetSize,
+      renderTargetSize
+    );
     renderTarget.current.texture.generateMipmaps = false;
 
     // The render target that we will use to blur the first render target
-    renderTargetBlur.current = new WebGLRenderTarget(renderTargetSize, renderTargetSize);
+    renderTargetBlur.current = new WebGLRenderTarget(
+      renderTargetSize,
+      renderTargetSize
+    );
     renderTargetBlur.current.texture.generateMipmaps = false;
 
     // Make a plane and make it face up
-    const planeGeometry = new PlaneGeometry(planeWidth, planeHeight).rotateX(Math.PI / 2);
+    const planeGeometry = new PlaneGeometry(planeWidth, planeHeight).rotateX(
+      Math.PI / 2
+    );
 
     const planeMaterial = new MeshBasicMaterial({
       map: renderTarget.current.texture,
@@ -188,13 +205,13 @@ export const Model = ({
     // Like MeshDepthMaterial, but goes from black to transparent
     depthMaterial.current = new MeshDepthMaterial();
     depthMaterial.current.userData.darkness = { value: shadowDarkness };
-    depthMaterial.current.onBeforeCompile = shader => {
+    depthMaterial.current.onBeforeCompile = (shader) => {
       shader.uniforms.darkness = depthMaterial.current.userData.darkness;
       shader.fragmentShader = `
         uniform float darkness;
         ${shader.fragmentShader.replace(
-          'gl_FragColor = vec4( vec3( 1.0 - fragCoordZ ), opacity );',
-          'gl_FragColor = vec4( vec3( 0.0 ), ( 1.0 - fragCoordZ ) * darkness );'
+          "gl_FragColor = vec4( vec3( 1.0 - fragCoordZ ), opacity );",
+          "gl_FragColor = vec4( vec3( 0.0 ), ( 1.0 - fragCoordZ ) * darkness );"
         )}
       `;
     };
@@ -207,8 +224,8 @@ export const Model = ({
     verticalBlurMaterial.current = new ShaderMaterial(VerticalBlurShader);
     verticalBlurMaterial.current.depthTest = false;
 
-    const unsubscribeX = rotationX.on('change', renderFrame);
-    const unsubscribeY = rotationY.on('change', renderFrame);
+    const unsubscribeX = rotationX.on("change", renderFrame);
+    const unsubscribeY = rotationY.on("change", renderFrame);
 
     return () => {
       renderTarget.current.dispose();
@@ -222,12 +239,13 @@ export const Model = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const blurShadow = useCallback(amount => {
+  const blurShadow = useCallback((amount) => {
     blurPlane.current.visible = true;
 
     // Blur horizontally and draw in the renderTargetBlur
     blurPlane.current.material = horizontalBlurMaterial.current;
-    blurPlane.current.material.uniforms.tDiffuse.value = renderTarget.current.texture;
+    blurPlane.current.material.uniforms.tDiffuse.value =
+      renderTarget.current.texture;
     horizontalBlurMaterial.current.uniforms.h.value = amount * (1 / 256);
 
     renderer.current.setRenderTarget(renderTargetBlur.current);
@@ -235,7 +253,8 @@ export const Model = ({
 
     // Blur vertically and draw in the main renderTarget
     blurPlane.current.material = verticalBlurMaterial.current;
-    blurPlane.current.material.uniforms.tDiffuse.value = renderTargetBlur.current.texture;
+    blurPlane.current.material.uniforms.tDiffuse.value =
+      renderTargetBlur.current.texture;
     verticalBlurMaterial.current.uniforms.v.value = amount * (1 / 256);
 
     renderer.current.setRenderTarget(renderTarget.current);
@@ -281,7 +300,7 @@ export const Model = ({
 
   // Handle mouse move animation
   useEffect(() => {
-    const onMouseMove = throttle(event => {
+    const onMouseMove = throttle((event) => {
       const { innerWidth, innerHeight } = window;
 
       const position = {
@@ -294,11 +313,11 @@ export const Model = ({
     }, 100);
 
     if (isInViewport && !reduceMotion) {
-      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener("mousemove", onMouseMove);
     }
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener("mousemove", onMouseMove);
     };
   }, [isInViewport, reduceMotion, rotationX, rotationY]);
 
@@ -316,16 +335,16 @@ export const Model = ({
       renderFrame();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [renderFrame]);
-
   return (
     <div
+      // className="absolute opacity-100"
       className={classes(styles.model, className)}
       data-loaded={loaded}
       style={cssProps({ delay: numToMs(showDelay) }, style)}
@@ -334,6 +353,7 @@ export const Model = ({
       aria-label={alt}
       {...rest}
     >
+      {/* <canvas className="absolute inset-0" ref={canvas} /> */}
       <canvas className={styles.canvas} ref={canvas} />
       {models.map((model, index) => (
         <Device
@@ -393,10 +413,11 @@ const Device = ({
         await textureLoader.loadAsync(texture.placeholder),
         await modelLoader.loadAsync(url),
       ]);
+      // console.log(gltf);
 
       modelGroup.current.add(gltf.scene);
 
-      gltf.scene.traverse(async node => {
+      gltf.scene.traverse(async (node) => {
         if (node.material) {
           node.material.color = new Color(0x1f2025);
         }
@@ -418,7 +439,7 @@ const Device = ({
             await applyScreenTexture(fullSize, node);
 
             animate(1, 0, {
-              onUpdate: value => {
+              onUpdate: (value) => {
                 placeholderScreen.current.material.opacity = value;
                 renderFrame();
               },
@@ -435,6 +456,7 @@ const Device = ({
 
       // Simple slide up animation
       if (model.animation === ModelAnimationType.SpringUp) {
+        // console.log("INSIDE: ANIMATION");
         playAnimation = () => {
           const startPosition = new Vector3(
             targetPosition.x,
@@ -445,14 +467,14 @@ const Device = ({
           gltf.scene.position.set(...startPosition.toArray());
 
           animate(startPosition.y, targetPosition.y, {
-            type: 'spring',
+            type: "spring",
             delay: (300 * index + showDelay) / 1000,
             stiffness: 60,
             damping: 20,
             mass: 1,
             restSpeed: 0.0001,
             restDelta: 0.0001,
-            onUpdate: value => {
+            onUpdate: (value) => {
               gltf.scene.position.y = value;
               renderFrame();
             },
@@ -464,7 +486,7 @@ const Device = ({
       if (model.animation === ModelAnimationType.LaptopOpen) {
         playAnimation = () => {
           const frameNode = gltf.scene.children.find(
-            node => node.name === MeshType.Frame
+            (node) => node.name === MeshType.Frame
           );
           const startRotation = new Vector3(MathUtils.degToRad(90), 0, 0);
           const endRotation = new Vector3(0, 0, 0);
@@ -473,13 +495,13 @@ const Device = ({
           frameNode.rotation.set(...startRotation.toArray());
 
           return animate(startRotation.x, endRotation.x, {
-            type: 'spring',
+            type: "spring",
             delay: (300 * index + showDelay + 300) / 1000,
             stiffness: 80,
             damping: 20,
             restSpeed: 0.0001,
             restDelta: 0.0001,
-            onUpdate: value => {
+            onUpdate: (value) => {
               frameNode.rotation.x = value;
               renderFrame();
             },
@@ -496,18 +518,26 @@ const Device = ({
   }, []);
 
   useEffect(() => {
-    if (!loadDevice || !show) return;
+    if (!loadDevice || !show) {
+      // console.log(loadDevice);
+      return;
+    }
     let animation;
 
     const onModelLoad = async () => {
       const { loadFullResTexture, playAnimation } = await loadDevice.start();
-
+      // console.log(loadFullResTexture, playAnimation +"dsfajkuhkgdfjjjjjjjj");
       setLoaded(true);
       onLoad?.();
 
       if (!reduceMotion) {
-        animation = playAnimation();
+        try{
+          animation = playAnimation();
+        }catch (e){
+          console.log(e);
+        }
       }
+      console.log(animation);
 
       await loadFullResTexture();
 

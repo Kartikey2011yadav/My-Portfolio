@@ -1,66 +1,127 @@
-import styles from './project-summary.module.css';
-import { deviceModels } from './components/model/device-models';
-import { useWindowSize } from './hooks';
-import { Suspense, lazy, useState } from 'react';
 import gamestackTexture2Large from './assets/gamestack-list-large.jpg';
 import gamestackTexture2Placeholder from './assets/gamestack-list-placeholder.jpg';
 import gamestackTexture2 from './assets/gamestack-list.jpg';
 import gamestackTextureLarge from './assets/gamestack-login-large.jpg';
 import gamestackTexturePlaceholder from './assets/gamestack-login-placeholder.jpg';
 import gamestackTexture from './assets/gamestack-login.jpg';
+import sliceTextureLarge from './assets/slice-app-large.jpg';
+import sliceTexturePlaceholder from './assets/slice-app-placeholder.jpg';
+import sliceTexture from './assets/slice-app.jpg';
+import sprTextureLarge from './assets/spr-lesson-builder-dark-large.jpg';
+import sprTexturePlaceholder from './assets/spr-lesson-builder-dark-placeholder.jpg';
+import sprTexture from './assets/spr-lesson-builder-dark.jpg';
+import { ProjectSummary } from './components/test/project-summary';
+import { useEffect, useRef, useState } from 'react';
 
-const Model = lazy(() =>
-  import('./components/model').then(module => ({ default: module.Model }))
-);
-
-const media = {
-  desktop: 2080,
-  laptop: 1680,
-  tablet: 1040,
-  mobile: 696,
-  mobileS: 400,
-};
-
-// const [modelLoaded, setModelLoaded] = useState(false);
-// const { width } = useWindowSize();
-// const isMobile = width <= media.tablet;
-const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
-const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
-
-// function handleModelLoad() {
-//   setModelLoaded(true);
-// }
 
 const Projects = () => {
+  const [visibleSections, setVisibleSections] = useState([]);
+  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
+  const projectOne = useRef();
+  const projectTwo = useRef();
+  const projectThree = useRef();
+
+  useEffect(() => {
+    const sections = [projectOne, projectTwo, projectThree];
+
+    const sectionObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            observer.unobserve(section);
+            if (visibleSections.includes(section)) return;
+            setVisibleSections((prevSections) => [...prevSections, section]);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+    );
+
+    const indicatorObserver = new IntersectionObserver(
+      ([entry]) => {
+        setScrollIndicatorHidden(!entry.isIntersecting);
+      },
+      { rootMargin: "-100% 0px 0px 0px" }
+    );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section.current);
+    });
+
+    return () => {
+      sectionObserver.disconnect();
+      indicatorObserver.disconnect();
+    };
+  }, [visibleSections]);
+
   return (
     <>
-      <div className={styles.model} data-device="phone">
-        <Model
-          alt={"hello"}
-          cameraPosition={{ x: 0, y: 0, z: 11.5 }}
-          showDelay={300}
-          onLoad={() => { }}
-          show={true}
-          models={[
-            {
-              ...deviceModels.phone,
-              position: { x: -0.6, y: 1.1, z: 0 },
-              texture: {
+      <div className=" overflow-x-hidden">
+        <ProjectSummary
+          id="project-1"
+          sectionRef={projectOne}
+          visible={visibleSections.includes(projectOne.current)}
+          index={1}
+          title="Designing the future of education"
+          description="Designing a platform to help educators build better online courseware"
+          buttonText="View project"
+          buttonLink="/projects/smart-sparrow"
+          model={{
+            type: "laptop",
+            alt: "Smart Sparrow lesson builder",
+            textures: [
+              {
+                srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
+                placeholder: sprTexturePlaceholder,
+              },
+            ],
+          }}
+        />
+        <ProjectSummary
+          id="project-2"
+          alternate
+          sectionRef={projectTwo}
+          visible={visibleSections.includes(projectTwo.current)}
+          index={2}
+          title="Video game progress tracking"
+          description="Design and development for a video game tracking app built in React Native"
+          buttonText="View website"
+          buttonLink="https://gamestack.hamishw.com"
+          model={{
+            type: "phone",
+            alt: "App login screen",
+            textures: [
+              {
                 srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
                 placeholder: gamestackTexturePlaceholder,
-                sizes: phoneSizes,
               },
-            },
-            {
-              ...deviceModels.phone,
-              position: { x: 0.6, y: -0.5, z: 0.3 },
-              texture: {
+              {
                 srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
                 placeholder: gamestackTexture2Placeholder,
-                sizes: phoneSizes,
               },
-            },
-          ]}
+            ],
+          }}
+        />
+        <ProjectSummary
+          id="project-3"
+          sectionRef={projectThree}
+          visible={visibleSections.includes(projectThree.current)}
+          index={3}
+          title="Biomedical image collaboration"
+          description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+          buttonText="View project"
+          buttonLink="/projects/slice"
+          model={{
+            type: "laptop",
+            alt: "Annotating a biomedical image in the Slice app",
+            textures: [
+              {
+                srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+                placeholder: sliceTexturePlaceholder,
+              },
+            ],
+          }}
         />
       </div>
     </>
