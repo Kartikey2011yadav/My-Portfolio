@@ -31,9 +31,8 @@ const ProjectCard = ({ project }) => {
 
   return (
     <>
-        <ProjDivider />
       <motion.div
-        className="flex flex-col lg:flex-row items-center justify-between bg-black text-white rounded-lg p-8 shadow-lg mb-8"
+        className="flex flex-col lg:flex-row items-center justify-between bg-transparent backdrop-filter backdrop-blur-lg text-white rounded-lg p-8 mb-8"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: id * 0.3 }}
@@ -66,7 +65,7 @@ const ProjectTitle = ({ id, title, description }) => (
     <p className="text-cyan-400 font-semibold mb-2">0{id}</p>
     
     <h2 className="text-3xl font-bold mb-4">{title}</h2>
-    <p className="text-lg text-gray-400">{description}</p>
+    <p className="text-lg text-gray-300">{description}</p>
   </div>
 );
 
