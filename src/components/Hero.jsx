@@ -1,4 +1,4 @@
-import { curve, heroBackground, robot } from "../assets";
+import { curve, heroBackground, heroBackground2, robot } from "../assets";
 import Button from "./Button";
 import Section from "./Section";
 import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero";
@@ -22,7 +22,7 @@ const Hero = () => {
       id="hero"
     >
       <div className="container relative" ref={parallaxRef}>
-        <div className="relative z-1 max-w-[62rem] mx-auto  text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
+        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">
             Hello There,&nbsp;This is Kartikey{` `}
             <span className="inline-block relative">
@@ -40,17 +40,16 @@ const Hero = () => {
             Unleash the power of AI within Brainwave. Upgrade your productivity
             with Brainwave, the open AI chat app.
           </p>
-          <div className=" flex justify-center">
-            <Button className="w-auto  " href="/pricing" >
+          <div className="flex justify-center">
+            <Button className="w-auto" href="/pricing">
               View Projects
             </Button>
             <Button className="w-auto ml-6" href="/pricing" white>
-            My Resume
+              My Resume
             </Button>
           </div>
-          
         </div>
-        
+
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
             <div className="relative bg-n-7 rounded-[1rem]">
@@ -65,7 +64,7 @@ const Hero = () => {
                   alt="AI"
                 />
 
-                <Generating className="absolute left-4 right-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2" text={"Loding My Life's Journey . . . "}/>
+                <Generating className="absolute left-4 right-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2" text={"Loading My Life's Journey . . . "} />
 
                 <ScrollParallax isAbsolutelyPositioned>
                   <ul className="hidden absolute -left-[5.5rem] bottom-[7.5rem] px-1 py-1 bg-n-9/40 backdrop-blur border border-n-1/10 rounded-2xl xl:flex">
@@ -88,7 +87,16 @@ const Hero = () => {
 
             <Gradient />
           </div>
-          <div className="absolute -top-[100%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[175%] lg:-top-[117%] blur-sm">
+          <div className="absolute -top-[100%] left-1/2 w-[234%] -translate-x-1/2 md:hidden blur-sm">
+            <img
+              src={heroBackground2}
+              className="w-full"
+              width={1440}
+              height={1800}
+              alt="hero"
+            />
+          </div>
+          <div className="absolute -top-[100%] left-1/2 w-[234%] -translate-x-1/2 hidden md:block md:-top-[46%] md:w-[175%] lg:-top-[117%] blur-sm">
             <img
               src={heroBackground}
               className="w-full"
@@ -102,7 +110,7 @@ const Hero = () => {
         </div>
 
         <CompanyLogos className="hidden relative z-10 mt-20 lg:block" />
-      <TechSlider />
+        <TechSlider />
       </div>
 
       <BottomLine />
