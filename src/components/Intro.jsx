@@ -7,7 +7,7 @@ import { BottomLine } from "./design/Intro";
 
 const Intro = () => {
   return (
-    <Section crosses id="Intro">
+    <Section IntroPadding id="Intro">
       <div className="container lg:flex">
         <div className="max-w-[25rem]">
           <h2 className="h2 mb-4 md:mb-8">
