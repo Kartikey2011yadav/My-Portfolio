@@ -32,11 +32,11 @@ export const LeftCurve = () => {
 export const BottomLine = () => {
   return (
     <>
-      <div className="hidden absolute top-[50.45rem] left-10 right-10 h-0.25 bg-color-5 pointer-events-none xl:block" />
+      <div className="hidden absolute top-[54.88rem] left-10 right-10 h-0.25 bg-color-5 pointer-events-none xl:block" />
 
-      <PlusSvg className="hidden absolute top-[50.1375rem] left-[2.1875rem] z-2 pointer-events-none xl:block" />
+      <PlusSvg className="hidden absolute top-[54.6075rem] left-[2.1875rem] z-2 pointer-events-none xl:block" />
 
-      <PlusSvg className="hidden absolute top-[50.1375rem] right-[2.1875rem] z-2 pointer-events-none xl:block" />
+      <PlusSvg className="hidden absolute top-[54.6075rem] right-[2.1875rem] -z-30 pointer-events-none xl:block" />
     </>
   );
 };
