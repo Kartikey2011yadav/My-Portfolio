@@ -122,21 +122,28 @@ export const work = [
 ];
 
 export const collabText =
-  "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+  "With 2+ years of experience, I craft innovative, user-focused applications that merge cutting-edge technology with seamless design to deliver impactful solutions.";
 
 export const collabContent = [
   {
     id: "0",
-    title: "Seamless Integration",
-    text: collabText,
+    title: "Mobile App Development",
+    text: "Flutter, Dart, Firebase, State Management (BLoC, Provider), Google Maps SDK, Clean Architecture, Animations.",
   },
   {
     id: "1",
-    title: "Smart Automation",
+    title: "Frontend & UI/UX",
+    text: "React.js, Next.js, Tailwind CSS, Framer Motion, Three.js, TypeScript, Redux, HTML5, CSS3.",
   },
   {
     id: "2",
-    title: "Top-notch Security",
+    title: "Backend & APIs",
+    text: "Django, Flask, Node.js, Express.js, FastAPI, RESTful APIs, GraphQL, JWT Authentication, WebSocket.",
+  },
+  {
+    id: "3",
+    title: "Database & DevOps",
+    text: "MySQL, MongoDB, PostgreSQL, Docker, Kubernetes, CI/CD Pipelines, AWS (EC2, S3), Git, Jenkins.",
   },
 ];
 
