@@ -31,7 +31,7 @@ const TechSlider = () => {
     const duplicatedSlides = [...slides, ...slides];
 
     return (
-        <div className="relative h-full overflow-hidden max-md:pt-4 bg-transparent mx-auto" style={{ width: "100%" }}>
+        <div className="relative h-full overflow-hidden max-md:pt-4 pt-2 bg-transparent mx-auto" style={{ width: "100%" }}>
 
             <div className="absolute "></div>
 
