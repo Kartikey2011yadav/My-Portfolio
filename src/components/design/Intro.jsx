@@ -23,7 +23,7 @@ export const LeftCurve = () => {
         width={522}
         height={182}
         alt="Curve 1"
-        style={{ filter: "hue-rotate(320deg) brightness(300%)" }} // Apply blue color filter
+        style={{ filter: "hue-rotate(130deg) brightness(300%)" }} // Apply blue color filter
       />
     </div>
   );
