@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         
         <Route path="/" index element={<Home />}/>
-        <Route path="/projects" element={<Projects />}/>
+        <Route path="/projects" element={<Projects />}/> // empty for now
         <Route path="/about" element={<About />}/>
         <Route path="/connect" element={<Connect />}/>
         <Route path="/pro" element={<ProjectsList />}/> // imp
