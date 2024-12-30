@@ -28,7 +28,7 @@ const Intro = () => {
             ))}
           </ul>
 
-          <Button>Try it now</Button>
+          <Button>Know More About Me . . .</Button>
         </div>
 
         <div className="lg:ml-auto pl-10 xl:w-[38rem] mt-4">
