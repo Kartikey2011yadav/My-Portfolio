@@ -35,6 +35,9 @@ const CursorTrail = () => {
         }, index * 50);
       });
     };
+
+    window.addEventListener("mousemove", moveCursor);
+    
     const animateTrails = () => {
       trails.forEach((trail, index) => {
         setTimeout(() => {
@@ -47,7 +50,6 @@ const CursorTrail = () => {
 
     animateTrails();
 
-    window.addEventListener("mousemove", moveCursor);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
