@@ -13,11 +13,14 @@
   color-scheme: dark;
 }
 
+/* not selectable  */
 * {
   scroll-behavior: smooth;
   user-select: none;
+  cursor: none; /* Hide the default cursor for all elements */
 }
 
+/* not selectable  */
 .non-selectable {
   user-select: none;
 }
@@ -27,6 +30,21 @@
     @apply font-sans bg-n-8 text-n-1 text-base;
   }
 }
+
+body {
+  cursor: none; /* Hide the default cursor */
+}
+
+.cursor-trail {
+  position: fixed;
+  background: linear-gradient(to bottom, #06e7e7, #306181);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  z-index: 99;
+  /* box-shadow: 0 0 2px rgb(82, 119, 105); Add shadow for effect */
+}
+
 
 .rotate-45 {
   @apply rotate-[45deg]
