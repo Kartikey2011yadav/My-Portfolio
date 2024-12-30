@@ -17,12 +17,12 @@ const CursorTrail = () => {
     for (let i = 0; i <= numTrails; i++) {
       const trail = document.createElement("div");
       trail.classList.add("cursor-trail");
-      trail.style.zIndex = `${990 - i}px`;
+      trail.style.zIndex = `${99 - i}px`;
       trail.style.width = `${15 - i}px`;
       trail.style.height = `${15 - i}px`;
       trail.style.marginLeft = `${i / 2}px`; // Adjust margin to keep smaller cursors within the biggest cursor
       trail.style.marginTop = `${i / 2}px`; // Adjust margin to keep smaller cursors within the biggest cursor
-      trail.style.transitionDelay = `${i * 0.005}s`;
+      trail.style.transitionDelay = `${i * 0.05}s`;
       document.body.appendChild(trail);
       trails.push(trail);
     }
@@ -49,7 +49,6 @@ const CursorTrail = () => {
     };
 
     animateTrails();
-
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
