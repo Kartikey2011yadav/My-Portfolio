@@ -1,15 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { deviceModels } from "./components/model/device-models";
+import { deviceModels } from "./model/device-models";
 import { Suspense, lazy, useState } from "react";
-import gamestackTexture2Large from "./assets/gamestack-list-large.jpg";
-import gamestackTexture2Placeholder from "./assets/gamestack-list-placeholder.jpg";
-import gamestackTexture2 from "./assets/gamestack-list.jpg";
-import gamestackTextureLarge from "./assets/gamestack-login-large.jpg";
-import gamestackTexturePlaceholder from "./assets/gamestack-login-placeholder.jpg";
-import gamestackTexture from "./assets/gamestack-login.jpg";
-import { Model } from "./components/model";
-import ProjDivider from "./projDivider";
+import gamestackTexture2Large from "../assets/gamestack-list-large.jpg";
+import gamestackTexture2Placeholder from "../assets/gamestack-list-placeholder.jpg";
+import gamestackTexture2 from "../assets/gamestack-list.jpg";
+import gamestackTextureLarge from "../assets/gamestack-login-large.jpg";
+import gamestackTexturePlaceholder from "../assets/gamestack-login-placeholder.jpg";
+import gamestackTexture from "../assets/gamestack-login.jpg";
+import { Model } from "./model";
+// import ProjDivider from "./projDivider";
 
 const modelStyle = {
   position: "absolute",
