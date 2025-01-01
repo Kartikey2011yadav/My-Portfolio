@@ -3,7 +3,7 @@ import Trail from "../utils/Trail";
 import styled from "styled-components";
 
 const TrailContainer = styled.div`
-  position: absolute;
+  position: fixed;
   pointer-events: none;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ const TrailContainer = styled.div`
     transition: transform 0.01s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: ${({ size }) => size}px;
     height: ${({ size }) => size}px;
-    background-color: ${({ inverted, color }) => (inverted ? "#fff" : color)};
+    background-color: ${({ inverted , color }) => (inverted ? "#fff" : color)};
   }
 `;
 
