@@ -16,7 +16,7 @@ const TrailContainer = styled.div`
     display: block;
     border-radius: 100%;
     transform-origin: center;
-    transition: transform 0.02s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.01s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: ${({ size }) => size}px;
     height: ${({ size }) => size}px;
     background-color: ${({ inverted, color }) => (inverted ? "#fff" : color)};
