@@ -17,7 +17,8 @@
 * {
   scroll-behavior: smooth;
   user-select: none;
-  cursor: none; /* Hide the default cursor for all elements */
+  /* Hide the default cursor for all elements */
+  /* cursor: none;  */
 }
 
 /* not selectable  */
@@ -32,19 +33,13 @@
 }
 
 body {
-  cursor: none; /* Hide the default cursor */
+  /* Hide the default cursor */
+  /* cursor: none;  */
 }
 
-.cursor-trail {
-  position: fixed;
-  background: linear-gradient(to bottom, #06e7e7, #306181);
-  border-radius: 50%;
-  pointer-events: none;
-  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-  z-index: 99;
-  /* box-shadow: 0 0 2px rgb(82, 119, 105); Add shadow for effect */
+.absolute.block.rounded-full.transition-transform {
+  transition-duration: 0.001s; /* Reduce transition duration */
 }
-
 
 .rotate-45 {
   @apply rotate-[45deg]

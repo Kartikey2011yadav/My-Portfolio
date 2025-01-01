@@ -13,7 +13,10 @@ class Trail {
     this.trail = document.createElement("span");
     this.range = size / 2 - (size / 2) * this.scale + 2;
 
-    this.trail.className = 'absolute block rounded-full transition-transform duration-200 ease-out';
+    this.trail.style.position = 'absolute';
+    this.trail.style.display = 'block';
+    this.trail.style.borderRadius = '100%';
+    this.trail.style.transition = 'transform 0.01s ease-out';
     this.trail.style.transform = this.index > 0 ? `scale(${this.scale}, ${this.scale})` : "";
 
     trailContainer?.appendChild(this.trail);
