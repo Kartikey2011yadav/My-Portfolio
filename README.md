@@ -66,7 +66,6 @@ Hello! I'm [Your Name], a passionate developer with a keen interest in [your are
   - Responsibility 2
   - Responsibility 3
 
-
 ## Contact
 
 Feel free to reach out to me via the following platforms:
