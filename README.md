@@ -75,4 +75,5 @@ Feel free to reach out to me via the following platforms:
 - **GitHub:** [Your GitHub Profile](link-to-github)
 - **Twitter:** [Your Twitter Profile](link-to-twitter)
 
+
 Thank you for visiting my portfolio! I look forward to connecting with you.
