@@ -2,7 +2,7 @@ const ButtonSvg = (white) => (
   <>
     <svg
       className="absolute top-0 left-0"
-      width="21"
+      width="22"
       height="44"
       viewBox="0 0 21 44"
     >
@@ -43,9 +43,9 @@ const ButtonSvg = (white) => (
     </svg>
     <svg
       className="absolute top-0 right-0"
-      width="21"
+      width="22"
       height="44"
-      viewBox="0 0 21 44"
+      viewBox="0 0 22 44"
     >
       <path
         fill={white ? "white" : "none"}

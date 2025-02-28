@@ -13,7 +13,7 @@ import MouseTrail from "./components/MouseTrail.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      <MouseTrail />
+      {/* <MouseTrail /> */}
       <Routes>
         <Route path="/" index element={<Home className="non-selectable" />} />
         <Route path="/projects" element={<Projects className="non-selectable" />} />
