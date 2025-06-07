@@ -23,7 +23,6 @@ const Home = () => {
         <Footer />
         <ScrollToTopButton />
       </div>
-
       <ButtonGradient />
     </>
   );
