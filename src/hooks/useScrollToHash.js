@@ -1,5 +1,5 @@
 import { useReducedMotion } from 'framer-motion';
-import { useLocation, useNavigate } from '@remix-run/react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useCallback, useRef } from 'react';
 
 export function useScrollToHash() {
