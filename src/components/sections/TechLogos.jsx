@@ -1,4 +1,4 @@
-import { techLogos } from "../constants";
+import { techLogos } from "../../constants";
 
 const TechLogos = ({ className }) => {
   return (

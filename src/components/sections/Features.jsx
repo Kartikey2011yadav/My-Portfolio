@@ -1,9 +1,9 @@
-import { benefits } from "../constants";
-import Heading from "./Heading";
-import Section from "./Section";
-import Arrow from "../assets/svg/Arrow";
-import { GradientLight } from "./design/Features";
-import ClipPath from "../assets/svg/ClipPath";
+import { benefits } from "../../constants";
+import Heading from "../common/Heading";
+import Section from "../common/Section";
+import Arrow from "../../assets/svg/Arrow";
+import { GradientLight } from "../design/Features";
+import ClipPath from "../../assets/svg/ClipPath";
 
 const Features = () => {
   return (

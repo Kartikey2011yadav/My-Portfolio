@@ -1,6 +1,6 @@
-import { check } from "../assets";
-import { pricing } from "../constants";
-import Button from "./Button";
+import { check } from "../../assets";
+import { pricing } from "../../constants";
+import Button from "../common/Button";
 
 const PricingList = () => {
   return (

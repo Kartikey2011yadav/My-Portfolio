@@ -5,14 +5,14 @@ import { Loader } from './loader';
 import { Section } from './section';
 import { Text } from './text';
 import { Transition } from './transition';
-import { deviceModels } from '../model/device-models';
+import { deviceModels } from '../../components/3d/model/device-models';
 import { useWindowSize } from '../../hooks';
 import { Suspense, lazy, useState } from 'react';
 import { cssProps, media } from '../../utils/style';
 import {useHydrated} from '../../hooks/useHydrated';
 import katakana from './katakana.svg';
 import styles from './project-summary.module.css';
-import { Model } from '../model';
+import { Model } from '../../components/3d/model';
 
 // const Model = lazy(() =>
 //   import('~/components/model').then(module => ({ default: module.Model }))

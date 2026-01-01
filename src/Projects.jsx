@@ -1,10 +1,7 @@
-import ButtonGradient from "./assets/svg/ButtonGradient";
-import Features from "./components/Features";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Pricing from "./components/Pricing";
-import ScrollToTopButton from "./components/ScrollToTopButton";
-import ProjectCard from "./components/projectCard";
+import Features from "./components/sections/Features";
+import Pricing from "./components/sections/Pricing";
+import ProjectCard from "./components/ui/projectCard";
+import MainLayout from "./layouts/MainLayout";
 const projects = [
     {
       id: 1,
@@ -37,17 +34,11 @@ function ProjectsList() {
   }
 const Home = () => {
   return (
-    <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
-        <Header />
+    <MainLayout>
         <Features />
         <Pricing />
         <ProjectsList />
-        <Footer />
-        <ScrollToTopButton />
-      </div>
-      <ButtonGradient />
-    </>
+    </MainLayout>
   );
 };
 

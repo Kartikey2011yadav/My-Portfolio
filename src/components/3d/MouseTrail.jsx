@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Trail from "../utils/Trail";
+import Trail from "../../utils/Trail";
 import styled from "styled-components";
 
 const TrailContainer = styled.div`

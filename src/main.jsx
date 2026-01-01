@@ -8,7 +8,7 @@ import "./index.css";
 import About from "./About.jsx";
 import Connect from "./Connect.jsx";
 import Test from "./test/Test.jsx";
-import MouseTrail from "./components/MouseTrail.jsx";
+import MouseTrail from "./components/3d/MouseTrail.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

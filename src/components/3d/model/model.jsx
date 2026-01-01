@@ -1,5 +1,5 @@
 import { animate, useReducedMotion, useSpring } from "framer-motion";
-import { useInViewport } from "../../hooks";
+import { useInViewport } from "../../../hooks";
 import {
   createRef,
   startTransition,
@@ -28,17 +28,17 @@ import {
   WebGLRenderer,
 } from "three";
 import { HorizontalBlurShader, VerticalBlurShader } from "three-stdlib";
-import { resolveSrcFromSrcSet } from "../../utils/image";
-import { classes, cssProps, numToMs } from "../../utils/style";
+import { resolveSrcFromSrcSet } from "../../../utils/image";
+import { classes, cssProps, numToMs } from "../../../utils/style";
 import {
   cleanRenderer,
   cleanScene,
   modelLoader,
   removeLights,
   textureLoader,
-} from "../../utils/three";
+} from "../../../utils/three";
 import { ModelAnimationType } from "./device-models";
-import { throttle } from "../../utils/throttle";
+import { throttle } from "../../../utils/throttle";
 import styles from "./model.module.css";
 
 const MeshType = {

@@ -1,21 +1,21 @@
 import { useState } from "react";
-import Section from "./Section";
-import Heading from "./Heading";
+import Section from "../common/Section";
+import Heading from "../common/Heading";
 import Generating from "./Generating";
-import { service1, service2, service3, check } from "../assets";
-import { brainwaveServices, brainwaveServicesIcons } from "../constants";
+import { service1, service2, service3, check } from "../../assets";
+import { brainwaveServices, brainwaveServicesIcons } from "../../constants";
 import {
   PhotoChatMessage,
   Gradient,
   VideoBar,
   VideoChatMessage,
-} from "./design/ProjectsHome";
+} from "../design/ProjectsHome";
 
 // test 
 import { lazy } from 'react';
 
 const DisplacementSphere = lazy(() =>
-  import('./displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
+  import('../3d/displacement-sphere/displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
 );
 
 const Project = () => {

@@ -1,4 +1,4 @@
-import { deviceModels } from "../components/model/device-models";
+import { deviceModels } from "../components/3d/model/device-models";
 import { Suspense, lazy, useState } from "react";
 import gamestackTexture2Large from "../assets/gamestack-list-large.jpg";
 import gamestackTexture2Placeholder from "../assets/gamestack-list-placeholder.jpg";
@@ -6,7 +6,7 @@ import gamestackTexture2 from "../assets/gamestack-list.jpg";
 import gamestackTextureLarge from "../assets/gamestack-login-large.jpg";
 import gamestackTexturePlaceholder from "../assets/gamestack-login-placeholder.jpg";
 import gamestackTexture from "../assets/gamestack-login.jpg";
-import { Model } from "../components/model";
+import { Model } from "../components/3d/model";
 // const Model = lazy(() =>
 //   import("./components/model/index").then((module) => ({
 //     default: module.Model,

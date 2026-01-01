@@ -1,13 +1,13 @@
-import Button from "./Button";
-import Heading from "./Heading";
-import Section from "./Section";
-import Tagline from "./Tagline";
-import { work } from "../constants";
-import { check2, grid, loading1 } from "../assets";
-import { Gradient } from "./design/workingOn";
-import { stars } from "../assets";
+import Button from "../common/Button";
+import Heading from "../common/Heading";
+import Section from "../common/Section";
+import Tagline from "../common/Tagline";
+import { work } from "../../constants";
+import { check2, grid, loading1 } from "../../assets";
+import { Gradient } from "../design/workingOn";
+import { stars } from "../../assets";
 import { InstagramLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
-import { instagram } from "../assets";
+import { instagram } from "../../assets";
 
 const WorkingOn = () => (
   <Section className="overflow-hidden" id="workingOn">

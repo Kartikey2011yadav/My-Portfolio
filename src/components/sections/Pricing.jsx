@@ -1,8 +1,8 @@
-import { smallSphere, stars } from "../assets";
-import Heading from "./Heading";
+import { smallSphere, stars } from "../../assets";
+import Heading from "../common/Heading";
 import PricingList from "./PricingList";
-import Section from "./Section";
-import { LeftLine, RightLine } from "./design/Pricing";
+import Section from "../common/Section";
+import { LeftLine, RightLine } from "../design/Pricing";
 
 const Pricing = () => {
   return (

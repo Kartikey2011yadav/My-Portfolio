@@ -1,6 +1,6 @@
 import React from "react";
-import Section from "./Section";
-import { socials } from "../constants";
+import Section from "../common/Section";
+import { socials } from "../../constants";
 
 const Footer = () => {
   return (

@@ -40,7 +40,7 @@
     "three-stdlib": "^2.36.1",
     "typewriter-effect": "^2.22.0",
     "veaury": "^2.6.3",
-    "vue-three-d-mockup": "^1.0.2"
+    "vue-three-d-mockup": "^0.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
