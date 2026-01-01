@@ -36,6 +36,19 @@ import {
   yourlogo,
 } from "../assets";
 
+import {
+  FigmaLogoIcon,
+  FramerLogoIcon,
+  SketchLogoIcon,
+  TwitterLogoIcon,
+  GitHubLogoIcon,
+  VercelLogoIcon,
+  NotionLogoIcon,
+  DiscordLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+
 export const navigation = [
   {
     id: "0",
@@ -326,4 +339,47 @@ export const socials = [
     iconUrl: facebook,
     url: "#",
   },
+];
+
+export const projects = [
+  {
+    id: 1,
+    title: "Designing the future of education",
+    description: "Designing a platform to help educators build better online courseware.",
+    buttonText: "View project",
+    buttonLink: "/education",
+    demoImage: "/path/to/education-demo.png",
+    isImageLeft: true,
+  },
+  {
+    id: 2,
+    title: "Video game progress tracking",
+    description: "Design and development for a video game tracking app built in React Native.",
+    buttonText: "View website",
+    buttonLink: "/gaming",
+    demoImage: "/path/to/gaming-demo.png",
+    isImageLeft: false,
+  },
+];
+
+export const heroContent = {
+  title: "Hello There, This is Kartikey",
+  subtitle: "Flutter Developer",
+  description: "Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the open AI chat app.",
+  buttonText: "View Projects",
+  buttonLink: "/pricing",
+  secondaryButtonText: "My Resume",
+  secondaryButtonLink: "/pricing",
+};
+
+export const techSlides = [
+  { icon: FigmaLogoIcon },
+  { icon: TwitterLogoIcon },
+  { icon: GitHubLogoIcon },
+  { icon: InstagramLogoIcon },
+  { icon: LinkedInLogoIcon },
+  { icon: DiscordLogoIcon },
+  { icon: SketchLogoIcon },
+  { icon: NotionLogoIcon },
+  { icon: VercelLogoIcon },
 ];

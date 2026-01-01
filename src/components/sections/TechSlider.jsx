@@ -1,34 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-    FigmaLogoIcon,
-    FramerLogoIcon,
-    SketchLogoIcon,
-    TwitterLogoIcon,
-    GitHubLogoIcon,
-    VercelLogoIcon,
-    NotionLogoIcon,
-    DiscordLogoIcon,
-    InstagramLogoIcon,
-    LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
-
-const slides = [
-    { icon: <FigmaLogoIcon /> },
-    { icon: <TwitterLogoIcon /> },
-    { icon: <GitHubLogoIcon /> },
-    { icon: <InstagramLogoIcon /> },
-    { icon: <LinkedInLogoIcon /> },
-    { icon: <DiscordLogoIcon /> },
-    { icon: <SketchLogoIcon /> },
-    { icon: <NotionLogoIcon /> },
-    { icon: <VercelLogoIcon /> },
-];
-
-
+import { techSlides } from "../../constants";
 
 const TechSlider = () => {
-    const duplicatedSlides = [...slides, ...slides];
+    const duplicatedSlides = [...techSlides, ...techSlides];
 
     return (
         <div className="relative h-full overflow-hidden max-md:pt-4 pt-2 bg-transparent mx-auto" style={{ width: "100%" }}>
@@ -47,9 +22,9 @@ const TechSlider = () => {
                 }}
             >
                 {duplicatedSlides.map((slide, index) => (
-                    <div key={index} className="flex-shrink-0" style={{ width: `${100 / slides.length}%` }}>
+                    <div key={index} className="flex-shrink-0" style={{ width: `${100 / techSlides.length}%` }}>
                         <div className="flex items-center justify-center h-full">
-                            {slide.icon}
+                            <slide.icon className="w-12 h-12 text-white" />
                         </div>
                     </div>
                 ))}

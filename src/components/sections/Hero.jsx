@@ -2,7 +2,7 @@ import { curve, heroBackground, heroBackground2, robot, heroImg } from "../../as
 import Button from "../common/Button";
 import Section from "../common/Section";
 import { BackgroundCircles, BottomLine, Gradient } from "../design/Hero";
-import { heroIcons } from "../../constants";
+import { heroIcons, heroContent } from "../../constants";
 import { ScrollParallax } from "react-just-parallax";
 import { useRef } from "react";
 import Generating from "./Generating";
@@ -24,9 +24,9 @@ const Hero = () => {
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">
-            Hello There,&nbsp;This is Kartikey{` `}
+            {heroContent.title}{` `}
             <span className="inline-block relative">
-              Flutter Developer{" "}
+              {heroContent.subtitle}{" "}
               <img
                 src={curve}
                 className="absolute top-full left-0 w-full xl:-mt-2"
@@ -37,15 +37,14 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Unleash the power of AI within Brainwave. Upgrade your productivity
-            with Brainwave, the open AI chat app.
+            {heroContent.description}
           </p>
           <div className="flex justify-center">
-            <Button className="w-auto" href="/pricing">
-              View Projects
+            <Button className="w-auto" href={heroContent.buttonLink}>
+              {heroContent.buttonText}
             </Button>
-            <Button className="w-auto ml-6" href="/pricing" white>
-              My Resume
+            <Button className="w-auto ml-6" href={heroContent.secondaryButtonLink} white>
+              {heroContent.secondaryButtonText}
             </Button>
           </div>
         </div>
