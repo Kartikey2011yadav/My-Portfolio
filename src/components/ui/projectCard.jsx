@@ -1,15 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { deviceModels } from "../3d/model/device-models";
-import { Suspense, lazy, useState } from "react";
-import gamestackTexture2Large from "../../assets/gamestack-list-large.jpg";
-import gamestackTexture2Placeholder from "../../assets/gamestack-list-placeholder.jpg";
-import gamestackTexture2 from "../../assets/gamestack-list.jpg";
-import gamestackTextureLarge from "../../assets/gamestack-login-large.jpg";
-import gamestackTexturePlaceholder from "../../assets/gamestack-login-placeholder.jpg";
-import gamestackTexture from "../../assets/gamestack-login.jpg";
+import { Suspense } from "react";
 import { Model } from "../3d/model";
-// import ProjDivider from "./projDivider";
 
 const modelStyle = {
   position: "absolute",
@@ -18,53 +11,62 @@ const modelStyle = {
   bottom: 0,
   left: 0,
 };
+
 const ProjectCard = ({ project }) => {
   const {
     id,
     title,
     description,
-    buttonText,
-    buttonLink,
-    demoImage,
-    isImageLeft,
+    tags,
+    modelType,
+    img,
+    source_code_link,
   } = project;
 
+  const isImageLeft = id % 2 !== 0;
+
   return (
-    <>
+    <motion.div
+      className="flex flex-col lg:flex-row items-center justify-between bg-transparent backdrop-filter backdrop-blur-lg text-white rounded-lg p-8 mb-8"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Demo Image (Left) */}
+      {isImageLeft && <ProjectDemo modelType={modelType} texture={img} />}
+
+      {/* Text Content */}
       <motion.div
-        className="flex flex-col lg:flex-row items-center justify-between bg-transparent backdrop-filter backdrop-blur-lg text-white rounded-lg p-8 mb-8"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: id * 0.3 }}
+        className={`flex flex-col ${
+          isImageLeft ? "lg:pl-8" : "lg:pr-8"
+        } text-center lg:text-left flex-1`}
+        initial={{ opacity: 0, x: isImageLeft ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {/* Demo Image */}
-        {isImageLeft && <ProjectDemo demoImage={demoImage} />}
-
-        {/* Text Content */}
-        <motion.div
-          className={`flex flex-col ${
-            isImageLeft ? "lg:pl-8" : "lg:pr-8"
-          } text-center lg:text-left`}
-          initial={{ opacity: 0, x: isImageLeft ? -50 : 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: id * 0.3 + 0.2 }}
-        >
-          <ProjectTitle id={id} title={title} description={description} />
-          <Button text={buttonText} link={buttonLink} />
-        </motion.div>
-
-        {/* Demo Image on Right */}
-        {!isImageLeft && <ProjectDemo demoImage={demoImage} />}
+        <ProjectTitle id={id} title={title} description={description} tags={tags} />
+        <Button text="View Source" link={source_code_link} />
       </motion.div>
-    </>
+
+      {/* Demo Image (Right) */}
+      {!isImageLeft && <ProjectDemo modelType={modelType} texture={img} />}
+    </motion.div>
   );
 };
 
-const ProjectTitle = ({ id, title, description }) => (
+const ProjectTitle = ({ id, title, description, tags }) => (
   <div className="mb-6">
     <p className="text-cyan-400 font-semibold mb-2">0{id}</p>
-    
     <h2 className="text-3xl font-bold mb-4">{title}</h2>
+    <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-4">
+      {tags && tags.map((tag, index) => (
+        <span key={index} className="bg-n-6 text-n-1 px-2 py-1 rounded text-xs">
+          {tag}
+        </span>
+      ))}
+    </div>
     <p className="text-lg text-gray-300">{description}</p>
   </div>
 );
@@ -72,58 +74,52 @@ const ProjectTitle = ({ id, title, description }) => (
 const Button = ({ text, link }) => (
   <a
     href={link}
-    className="inline-flex items-center bg-cyan-400 text-black py-2 px-4 rounded-md mt-4 hover:bg-cyan-300 transition-all duration-300"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center bg-cyan-400 text-black py-2 px-4 rounded-md mt-4 hover:bg-cyan-300 transition-all duration-300 w-fit mx-auto lg:mx-0"
   >
     {text} <span className="ml-2">→</span>
   </a>
 );
 
-const ProjectDemo = ({ demoImage }) => (
-  <motion.div
-    className="lg:w-1/2 mt-6 lg:mt-0"
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.8 }}
-  >
-    <Suspense
-      fallback={
-        <div className="flex justify-center items-center flex-col">
-          Loading...
-        </div>
-      }
+const ProjectDemo = ({ modelType, texture }) => {
+  const modelConfig = deviceModels[modelType] || deviceModels.phone;
+
+  return (
+    <motion.div
+      className="lg:w-1/2 h-[400px] relative mt-6 lg:mt-0 w-full"
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
     >
-      <div className=" p-0 w-screen h-screen flex justify-start items-start flex-row gap-8">
-        <Model
-          alt={"hello"}
-          cameraPosition={{ x: 0, y: 0, z: 11.5 }}
-          showDelay={300}
-          onLoad={() => {}}
-          show={true}
-          style={modelStyle}
-          models={[
-            {
-              ...deviceModels.phone,
-              position: { x: -0.6, y: 1.1, z: 0.1 },
-              texture: {
-                srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-                placeholder: gamestackTexturePlaceholder,
-                // sizes: phoneSizes,
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-full">
+            Loading 3D Model...
+          </div>
+        }
+      >
+        <div className="w-full h-full">
+          <Model
+            show={true}
+            style={modelStyle}
+            cameraPosition={{ x: 0, y: 0, z: modelType === 'laptop' ? 25 : 12 }}
+            models={[
+              {
+                ...modelConfig,
+                position: { x: 0, y: 0, z: 0 },
+                texture: {
+                  srcSet: texture,
+                  placeholder: texture,
+                },
               },
-            },
-            {
-              ...deviceModels.phone,
-              position: { x: 0.6, y: -0.5, z: 0.3 },
-              texture: {
-                srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-                placeholder: gamestackTexture2Placeholder,
-                // sizes: phoneSizes,
-              },
-            },
-          ]}
-        />
-      </div>
-    </Suspense>
-  </motion.div>
-);
+            ]}
+          />
+        </div>
+      </Suspense>
+    </motion.div>
+  );
+};
 
 export default ProjectCard;
